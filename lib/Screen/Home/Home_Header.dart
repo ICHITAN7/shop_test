@@ -11,7 +11,6 @@ class main_header extends StatelessWidget {
       Container(
         width: double.infinity,
         height: 500,
-        color: Colors.black.withOpacity(1),
         child: Opacity(
           opacity: 0.8,
           child: Image.network(
@@ -44,7 +43,7 @@ class main_header extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFFe08243),
+                  backgroundColor: Theme.of(context).primaryColor,
                   textStyle: const TextStyle(fontSize: 30, color: Colors.white),
                   minimumSize: const Size(200, 50),
                   shape: RoundedRectangleBorder(

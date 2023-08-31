@@ -1,106 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shop_test/Screen/Shop/Constant/ProductsCard.dart';
+import '../../Controller/ProductController.dart';
 
-class ShopScreen extends StatefulWidget {
-  const ShopScreen({super.key});
+class ShopScreen extends StatelessWidget {
+  ShopScreen({super.key});
 
-  @override
-  State<ShopScreen> createState() => _ShopScreenState();
-}
-
-class _ShopScreenState extends State<ShopScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                height: 130,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFe08243).withOpacity(0.3),
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: const Color(0xFFe08243).withOpacity(0.3),
-                        offset: const Offset(0, 4),
-                      )
-                    ]),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10)),
-                      child: GestureDetector(
-                        onTap: (){Catagories();},
-                        child: Image(
-                          image: NetworkImage('https://www.stryx.com/cdn/shop/articles/man-looking-attractive.jpg?v=1666662774'),
-                          fit: BoxFit.cover,
-                          width: 200,
-                          height: 130,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text('Men',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
-                    ],
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                height: 130,
-                decoration: BoxDecoration(
-                    color: const Color(0xFFe08243).withOpacity(0.3),
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 5,
-                        color: const Color(0xFFe08243).withOpacity(0.3),
-                        offset: const Offset(0, 4),
-                      )
-                    ]),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10)),
-                      child: GestureDetector(
-                        onTap: (){Catagories();},
-                        child: Image(
-                          image: NetworkImage('https://www.stryx.com/cdn/shop/articles/man-looking-attractive.jpg?v=1666662774'),
-                          fit: BoxFit.cover,
-                          width: 200,
-                          height: 130,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text('Men',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30),),
-                    ],
-                )),
-          ),
-        ],
-      ),
-    );
-  ;
-  }
-}
-
-class Catagories extends StatelessWidget {
-  const Catagories({
-    super.key,
-  });
+  ProductsController controller = Get.put(ProductsController());
 
   @override
   Widget build(BuildContext context) {
@@ -108,9 +14,9 @@ class Catagories extends StatelessWidget {
       length: 5,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
-            'Men',
-            style: TextStyle(color: Colors.black, fontSize: 23),
+          title: Text(
+            'Shopping',
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           backgroundColor: Colors.white.withOpacity(0.7),
           actions: [
@@ -126,254 +32,52 @@ class Catagories extends StatelessWidget {
               indicatorColor: Color(0xFFe08243),
               tabs: [
                 Tab(
-                  text: 'New',
+                  text: 'Men',
                 ),
                 Tab(
-                  text: 'Shirt',
+                  text: 'Women',
                 ),
                 Tab(
-                  text: 'Pants',
+                  text: 'Boy',
                 ),
                 Tab(
-                  text: 'Shoes',
+                  text: 'Girl',
                 ),
                 Tab(
-                  text: 'Accessories',
+                  text: 'Baby',
                 ),
               ]),
         ),
-        body: TabBarView(children: [
-          SingleChildScrollView(
-            child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Categories_Card(
-                      title: 'New',
-                      imageUrl:
-                          'https://img.freepik.com/free-photo/beautiful-casual-men-fashion-clothes-set_1203-7836.jpg?size=626&ext=jpg',
-                    ),
-                    Categories_Card(
-                      title: 'Clothes',
-                      imageUrl:
-                          'https://img.freepik.com/free-photo/white-shirt_1339-6377.jpg?size=626&ext=jpg',
-                    ),
-                  ],
-                )),
-          ),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Categories_Card(
-                    title: 'New',
-                    imageUrl:
-                        'https://static.fibre2fashion.com//articleresources/images/87/8609/fashion%20women-small_Small.jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Clothes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/set-with-fashionable-women-s-clothing-skirt-sweater-sandals-accessories_169016-4108.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Pants',
-                    imageUrl:
-                        'https://truewerk.com/cdn/shop/files/TW-HERO-T2WerkPant-SD-M-1200x1200-bd93c0f_1024x1024.jpg?v=1687827361',
-                  ),
-                  Categories_Card(
-                    title: 'Shoes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/women-rsquo-s-white-high-heel-shoes-fashion_53876-106046.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Accessories',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/boots-among-male-accessories-near-gift-cup-drink_23-2148114410.jpg?size=626&ext=jpg',
-                  ),
-                ],
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Categories_Card(
-                    title: 'New',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/beautiful-casual-men-fashion-clothes-set_1203-7836.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Clothes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/white-shirt_1339-6377.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Pants',
-                    imageUrl:
-                        'https://truewerk.com/cdn/shop/files/TW-HERO-T2WerkPant-SD-M-1200x1200-bd93c0f_1024x1024.jpg?v=1687827361',
-                  ),
-                  Categories_Card(
-                    title: 'Shoes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/fashion-shoes-sneakers_1203-7529.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Accessories',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/boots-among-male-accessories-near-gift-cup-drink_23-2148114410.jpg?size=626&ext=jpg',
-                  ),
-                ],
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Categories_Card(
-                    title: 'New',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/beautiful-casual-men-fashion-clothes-set_1203-7836.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Clothes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/white-shirt_1339-6377.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Pants',
-                    imageUrl:
-                        'https://truewerk.com/cdn/shop/files/TW-HERO-T2WerkPant-SD-M-1200x1200-bd93c0f_1024x1024.jpg?v=1687827361',
-                  ),
-                  Categories_Card(
-                    title: 'Shoes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/fashion-shoes-sneakers_1203-7529.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Accessories',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/boots-among-male-accessories-near-gift-cup-drink_23-2148114410.jpg?size=626&ext=jpg',
-                  ),
-                ],
-              )),
-          Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Categories_Card(
-                    title: 'New',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/beautiful-casual-men-fashion-clothes-set_1203-7836.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Clothes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/white-shirt_1339-6377.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Pants',
-                    imageUrl:
-                        'https://truewerk.com/cdn/shop/files/TW-HERO-T2WerkPant-SD-M-1200x1200-bd93c0f_1024x1024.jpg?v=1687827361',
-                  ),
-                  Categories_Card(
-                    title: 'Shoes',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/fashion-shoes-sneakers_1203-7529.jpg?size=626&ext=jpg',
-                  ),
-                  Categories_Card(
-                    title: 'Accessories',
-                    imageUrl:
-                        'https://img.freepik.com/free-photo/boots-among-male-accessories-near-gift-cup-drink_23-2148114410.jpg?size=626&ext=jpg',
-                  ),
-                ],
-              )),
-        ]),
+        body:TabBarView(
+          children: [
+            categoryTab(condition: 'Men'),
+            categoryTab(condition: 'Women'),
+            categoryTab(condition: 'Boy'),
+            categoryTab(condition: 'Girl'),
+            categoryTab(condition: 'Baby'),
+          ],
+        )
       ),
     );
   }
-}
 
-class Categories_Card extends StatelessWidget {
-  const Categories_Card({
-    super.key,
-    required this.title,
-    required this.imageUrl,
-  });
-  final title;
-  final imageUrl;
-  @override
-  Widget build(BuildContext context) {
+  Padding categoryTab({required String condition}) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: const Color(0xFFe08243).withOpacity(0.3),
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 5,
-                  color: const Color(0xFFe08243).withOpacity(0.3),
-                  offset: const Offset(0, 4),
-                )
-              ]),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    bottomLeft: Radius.circular(10)),
-                child: GestureDetector(
-                  onTap: (){print('hi');},
-                  child: Image(
-                    image: NetworkImage(imageUrl),
-                    fit: BoxFit.cover,
-                    width: 150,
-                    height: 100,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Adidas',
-                      style: TextStyle(color: Colors.black.withOpacity(0.7)),
-                    ),
-                    Text(
-                      '50' + '\$',
-                      style: TextStyle(
-                          color: Colors.red.withOpacity(1),
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(onPressed: (){print("love");}, icon: Icon(Icons.favorite_border)),
-                ],
-              )
-            ],
-          )),
-    );
+            padding: const EdgeInsets.only(top: 8.0),
+            child: GetBuilder<ProductsController>(
+                builder: (controller){
+                  final List<dynamic> products = controller.productsModel.data!;
+                  final List<dynamic> filteredProducts = products.where((product) => product.category == condition).toList();
+                  final count = filteredProducts.length;
+                  return ListView.builder(
+                    itemCount: count,
+                    itemBuilder: (context, index) {
+                      final product = filteredProducts[index];
+                      return ProductCard(model: product.model.toString(), brand: product.brand.toString(), price:product.price!.toInt() , dis:product.discount!.toInt(), description: product.detail.toString(), imageUrl:product.proImage.toString());
+                    },
+                  );
+                }
+            ),
+          );
   }
 }

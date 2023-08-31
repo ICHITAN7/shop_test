@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shop_test/Screen/Home/Home_screen.dart';
 import 'package:shop_test/Screen/Shop/Shop_Screen.dart';
-
 import 'Bag/Bag_Screen.dart';
 import 'Profile/Profile_Screen.dart';
 class MainPage extends StatefulWidget {
@@ -28,10 +27,10 @@ class _MainPageState extends State<MainPage> {
           padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 15.0),
           child: GNav(
             selectedIndex: 0,
-            activeColor: const Color(0xFFe08243),
+            activeColor: Theme.of(context).primaryColor,
             iconSize: 30,
             gap: 12,
-            tabBackgroundColor:const Color(0xFFe08243).withOpacity(0.3),
+            tabBackgroundColor:Theme.of(context).primaryColor.withOpacity(0.3),
             padding:const EdgeInsets.all(10),
             tabs:const [
               GButton(
@@ -51,9 +50,9 @@ class _MainPageState extends State<MainPage> {
                 text: 'Profile',
                 ),
             ],
-            onTabChange: (Index) {
+            onTabChange: (index) {
               setState(() {
-                selectedIndex = Index;
+                selectedIndex = index;
               });
             },
             ),
@@ -61,8 +60,8 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
-  Widget buildPage(int Index){
-    switch (Index) {
+  Widget buildPage(int index){
+    switch (index) {
       case 0:
         return HomeScreen();
       case 1:
